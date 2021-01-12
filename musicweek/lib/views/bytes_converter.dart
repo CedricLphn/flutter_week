@@ -11,77 +11,39 @@ class _BytesConvertState extends State<BytesConvert> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("test")),
-        body: Container(
-          child: Column(children: <Widget>[
-            Column(
-              children: [
-                DropdownButton<String>(
-                  value: dropdownValue,
-                  icon: Icon(Icons.arrow_downward),
-                  iconSize: 24,
-                  elevation: 16,
-                  style: TextStyle(color: Colors.deepPurple),
-                  underline: Container(
-                    height: 2,
-                    color: Colors.deepPurpleAccent,
+      appBar: AppBar(title: Text("test")),
+      body: SizedBox(
+        height: 500,
+        width: 500,
+        child: Card(
+          child: Column(
+            children : [Row(
+                children: <Widget>[
+                  Text("To"),
+                    Expanded(child:
+                    TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Password',
+                        he
+                      )
+                    )
+
                   ),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                    });
-                  },
-                  items: <String>[
-                    'Octet - O',
-                    'Kilooctet – KO',
-                    'Mégaoctet – MO',
-                    'Gigaoctet - GO',
-                    ' Téraoctet – TO',
-                    ' Pétaoctet – PO'
-                  ].map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Enter a search term'),
-                )
-              ],
-            ),
-            DropdownButton<String>(
-              value: dropdownValue,
-              icon: Icon(Icons.arrow_downward),
-              iconSize: 24,
-              elevation: 16,
-              style: TextStyle(color: Colors.deepPurple),
-              underline: Container(
-                height: 2,
-                color: Colors.deepPurpleAccent,
-              ),
-              onChanged: (String newValue) {
-                setState(() {
-                  dropdownValue = newValue;
-                });
-              },
-              items: <String>[
-                'Octet - O',
-                'Kilooctet – KO',
-                'Mégaoctet – MO',
-                'Gigaoctet - GO',
-                ' Téraoctet – TO',
-                ' Pétaoctet – PO'
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            )
-          ]),
-        ));
+                  Text('GO')
+                ]),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Text("hello"),
+                    Text("Hello")
+                  ])
+            ],
+
+          ),
+        ),
+      ),
+    );
   }
 }
