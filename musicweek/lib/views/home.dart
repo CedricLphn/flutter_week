@@ -1,3 +1,4 @@
+import 'Age.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -5,6 +6,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        routes: {
+          '/age': (context) => Age(),
+        },
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             backgroundColor: Colors.grey[850],
@@ -26,8 +30,10 @@ class Home extends StatelessWidget {
                   mainAxisSpacing: 6.0,
                   children: List.generate(choices.length, (index) {
                     return Center(
-                      child: SelectCard(choice: choices[index]),
-                    );
+                        child: SelectCard(
+                      choice: choices[index],
+                      route: '/age ',
+                    ));
                   })),
             )));
   }
@@ -37,6 +43,9 @@ class Choice {
   const Choice({this.title, this.icon});
   final String title;
   final IconData icon;
+  void changeScreen(BuildContext context, String name) {
+    Navigator.pushNamed(context, name);
+  }
 }
 
 const List<Choice> choices = const <Choice>[
@@ -56,15 +65,17 @@ const List<Choice> choices = const <Choice>[
 ];
 
 class SelectCard extends StatelessWidget {
-  const SelectCard({Key key, this.choice}) : super(key: key);
+  const SelectCard({Key key, this.choice, this.route}) : super(key: key);
   final Choice choice;
+  final String route;
 
   @override
   Widget build(BuildContext context) {
     final TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
     return Card(
       color: Colors.deepOrange[300],
-      child: Center(
+      child: InkWell(
+        onTap: () => choice.changeScreen(context, route),
         child: Container(
           padding: EdgeInsets.all(15),
           height: 200,
