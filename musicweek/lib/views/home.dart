@@ -1,46 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class Home extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            backgroundColor: Colors.grey[850],
+            appBar: AppBar(
+              leading: Icon(Icons.home),
+              actions: [Icon(Icons.more_vert)],
+              title: Text("Flutter GridView Demo"),
+              backgroundColor: Colors.grey[850],
+            ),
+            body: GridView.count(
+                crossAxisCount: 3,
+                crossAxisSpacing: 6.0,
+                mainAxisSpacing: 6.0,
+                children: List.generate(choices.length, (index) {
+                  return Center(
+                    child: SelectCard(choice: choices[index]),
+                  );
+                }))));
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
+class Choice {
+  const Choice({this.title, this.icon});
   final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+  final IconData icon;
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+const List<Choice> choices = const <Choice>[
+  const Choice(
+      title: 'Conversion taille de fichiers informatique',
+      icon: Icons.broken_image),
+  const Choice(title: 'Connaître mon âge', icon: Icons.person),
+  const Choice(title: 'Calculer des promotions', icon: Icons.calculate),
+  const Choice(title: 'Calculer un temps écoulé', icon: Icons.timelapse),
+  const Choice(title: 'Convertir une distance', icon: Icons.edit_road),
+  const Choice(title: 'Convertir des aires', icon: Icons.ac_unit),
+  const Choice(title: 'Convertir des températures', icon: Icons.ac_unit_sharp),
+  const Choice(
+      title: 'Convertir décimal en chiffre romain',
+      icon: Icons.calculate_outlined),
+  const Choice(title: 'Playlist de music', icon: Icons.music_note),
+];
+
+class SelectCard extends StatelessWidget {
+  const SelectCard({Key key, this.choice}) : super(key: key);
+  final Choice choice;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            )
-          ],
+    final TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
+    return Card(
+      color: Colors.deepOrange[300],
+      child: Center(
+        child: Container(
+          padding: EdgeInsets.all(15),
+          height: 200,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                    child:
+                        Icon(choice.icon, size: 50.0, color: textStyle.color)),
+                Text(
+                  choice.title,
+                  style: textStyle,
+                  textAlign: TextAlign.center,
+                ),
+              ]),
         ),
-      )
+      ),
     );
   }
 }
