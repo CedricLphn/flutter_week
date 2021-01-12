@@ -14,15 +14,22 @@ class Home extends StatelessWidget {
               title: Text("Flutter GridView Demo"),
               backgroundColor: Colors.grey[850],
             ),
-            body: GridView.count(
-                crossAxisCount: 3,
-                crossAxisSpacing: 6.0,
-                mainAxisSpacing: 6.0,
-                children: List.generate(choices.length, (index) {
-                  return Center(
-                    child: SelectCard(choice: choices[index]),
-                  );
-                }))));
+            body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/music.jpg"),
+                    fit: BoxFit.cover),
+              ),
+              child: GridView.count(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 6.0,
+                  mainAxisSpacing: 6.0,
+                  children: List.generate(choices.length, (index) {
+                    return Center(
+                      child: SelectCard(choice: choices[index]),
+                    );
+                  })),
+            )));
   }
 }
 
