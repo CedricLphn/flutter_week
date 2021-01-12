@@ -11,7 +11,7 @@ class _BytesConvertState extends State<BytesConvert> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("test")),
+      appBar: AppBar(title: Text("Converter")),
       body: Center(
         child: SizedBox(
           height: 500,
@@ -37,8 +37,14 @@ class _BytesConvertState extends State<BytesConvert> {
                               dropdownValue = newValue;
                             });
                           },
-                          items: <String>['Octet - O', 'Two', 'Free', 'Four']
-                              .map<DropdownMenuItem<String>>((String value) {
+                          items: <String>[
+                            'Octet - O',
+                            'Kilooctet - KO',
+                            'Mégaoctet - MO',
+                            'Gigaoctet - GO',
+                            'Téraoctet - TO',
+                            'Pétaoctet - PO'
+                          ].map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
@@ -74,8 +80,14 @@ class _BytesConvertState extends State<BytesConvert> {
                               dropdownValue = newValue;
                             });
                           },
-                          items: <String>['Octet - O', 'Two', 'Free', 'Four']
-                              .map<DropdownMenuItem<String>>((String value) {
+                          items: <String>[
+                            'Octet - O',
+                            'Kilooctet - KO',
+                            'Mégaoctet - MO',
+                            'Gigaoctet - GO',
+                            'Téraoctet - TO',
+                            'Pétaoctet - PO'
+                          ].map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
