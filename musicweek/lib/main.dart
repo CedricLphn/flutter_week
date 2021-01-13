@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:musicweek/views/bytes_converter.dart';
+import 'package:musicweek/views/age.dart';
 import 'package:musicweek/views/home.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Main());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: BytesConvert(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, routes: {
+      '/': (context) => Home(),
+      '/age': (context) => Age(),
+    });
   }
 }
