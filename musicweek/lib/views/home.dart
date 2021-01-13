@@ -26,7 +26,7 @@ class Home extends StatelessWidget {
               return Center(
                   child: SelectCard(
                 choice: choices[index],
-                route: '/age',
+                route: choices[index].route,
               ));
             })),
       ),
@@ -35,9 +35,10 @@ class Home extends StatelessWidget {
 }
 
 class Choice {
-  const Choice({this.title, this.icon});
+  const Choice({this.title, this.icon, this.route});
   final String title;
   final IconData icon;
+  final String route;
   void changeScreen(BuildContext context, String name) {
     Navigator.pushNamed(context, name);
   }
@@ -46,17 +47,33 @@ class Choice {
 const List<Choice> choices = const <Choice>[
   const Choice(
       title: 'Conversion taille de fichiers informatique',
-      icon: Icons.broken_image),
-  const Choice(title: 'Connaître mon âge', icon: Icons.person),
-  const Choice(title: 'Calculer des promotions', icon: Icons.calculate),
-  const Choice(title: 'Calculer un temps écoulé', icon: Icons.timelapse),
-  const Choice(title: 'Convertir une distance', icon: Icons.edit_road),
-  const Choice(title: 'Convertir des aires', icon: Icons.ac_unit),
-  const Choice(title: 'Convertir des températures', icon: Icons.ac_unit_sharp),
+      icon: Icons.broken_image,
+      route: '/bytes_converter'),
+  const Choice(title: 'Connaître mon âge', icon: Icons.person, route: '/age'),
+  const Choice(
+      title: 'Calculer des promotions',
+      icon: Icons.calculate,
+      route: '/promotion'),
+  const Choice(
+      title: 'Calculer un temps écoulé', icon: Icons.timelapse, route: '/date'),
+  const Choice(
+      title: 'Convertir une distance',
+      icon: Icons.edit_road,
+      route: '/distance_converter'),
+  const Choice(
+      title: 'Convertir des aires',
+      icon: Icons.ac_unit,
+      route: '/area_converter'),
+  const Choice(
+      title: 'Convertir des températures',
+      icon: Icons.ac_unit_sharp,
+      route: '/temperature_converter'),
   const Choice(
       title: 'Convertir décimal en chiffre romain',
-      icon: Icons.calculate_outlined),
-  const Choice(title: 'Playlist de music', icon: Icons.music_note),
+      icon: Icons.calculate_outlined,
+      route: '/roman_converter'),
+  const Choice(
+      title: 'Playlist de music', icon: Icons.music_note, route: '/music'),
 ];
 
 class SelectCard extends StatelessWidget {
