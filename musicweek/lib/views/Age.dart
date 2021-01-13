@@ -37,7 +37,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String result="";
- String dateDuJour="";
+  String dateDuJour="";
   String info ="";
   String delai ="";
   String dateSelect = "Aucune date sélectionnée";
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
               margin: EdgeInsets.all(8),
               child: Text(dateSelect),
             ),
-           /* Container(
+            /* Container(
               margin: EdgeInsets.all(8),
               child: Text(timeSelect),
             ),
@@ -79,7 +79,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ).then((timeSelect){
                   if(timeSelect != null) {
                     this.timeSelect = timeSelect.hour.toString() + " h " + timeSelect.minute.toString();
-
                   }
                 });
               },
@@ -124,10 +123,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
 
                     if( DateTime.now().month < value.month) { //anniversaire pas encore passé
-                     mois = mois - (DateTime.now().month - value.month);
-                     annee = annee - 1;
-                     result = "Vous avez : " + annee.toString() + " ans !";
-                     delai ="Votre anniversaire est dans " + moisD.toString() + " mois et " + jourD.toString() + " jours !";
+                      mois = mois - (DateTime.now().month - value.month);
+                      annee = annee - 1;
+                      result = "Vous avez : " + annee.toString() + " ans !";
+                      delai ="Votre anniversaire est dans " + moisD.toString() + " mois et " + jourD.toString() + " jours !";
                     }
                     else if(DateTime.now().month > value.month) { // anniversaire passé
                       mois = mois + (DateTime.now().month - value.month);

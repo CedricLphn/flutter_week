@@ -8,7 +8,7 @@ import 'package:musicweek/views/home.dart';
 import 'package:musicweek/views/music.dart';
 import 'package:musicweek/views/promotion.dart';
 import 'package:musicweek/views/romain.dart';
-import 'package:musicweek/views/temperature.dart';
+import 'package:musicweek/views/temperature_converter.dart';
 
 void main() {
   runApp(Main());
@@ -21,11 +21,11 @@ class Main extends StatelessWidget {
       '/': (context) => Home(),
       '/bytes_converter': (context) => BytesConvert(),
       '/age': (context) => Age(),
+      '/temperature': (context) => TempApp(),
       '/date' : (context) => Date(),
       '/promotion' : (context) => Promotion(),
       '/distance': (context) => Distance(),
       '/aires' : (context) => Aires(),
-      '/temperature' : (context) => Temperature(),
       '/romain' : (context) => Romain(),
       '/music' : (context) => Music()
     });
