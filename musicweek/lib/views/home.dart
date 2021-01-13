@@ -15,7 +15,8 @@ class Home extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/music.jpg"), fit: BoxFit.cover),
+              image: AssetImage("assets/images/background.jpg"),
+              fit: BoxFit.cover),
         ),
         child: GridView.count(
             crossAxisCount: 3,
@@ -69,7 +70,11 @@ class SelectCard extends StatelessWidget {
     return Card(
       color: Colors.deepOrange[300],
       child: InkWell(
+        //highlightColor: Colors.red,
+        splashColor: Colors.purpleAccent,
+        radius: 100,
         onTap: () => choice.changeScreen(context, route),
+
         child: Container(
           padding: EdgeInsets.all(15),
           height: 200,

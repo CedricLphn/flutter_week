@@ -9,7 +9,7 @@ void main() {
 class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(routes: {
+    return MaterialApp(debugShowCheckedModeBanner: false, routes: {
       '/': (context) => Home(),
       '/age': (context) => Age(),
     });
