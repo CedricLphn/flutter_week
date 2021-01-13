@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musicweek/views/age.dart';
 import 'package:musicweek/views/home.dart';
+import 'views/bytes_converter.dart';
 import 'views/temperature_converter.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class Main extends StatelessWidget {
       '/': (context) => Home(),
       '/age': (context) => Age(),
       '/temperature_converter': (context) => TempApp(),
+      '/bytes_converter': (context) => BytesConvert()
     });
   }
 }

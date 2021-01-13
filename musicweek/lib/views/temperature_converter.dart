@@ -39,7 +39,7 @@ class _TempAppState extends State<TempApp> {
     // APPBAR
     AppBar appBar = AppBar(
       title: Text("Convertir des temperatures"),
-      leading: Icon(Icons.home),
+      //   leading: Icon(Icons.home),
       actions: [Icon(Icons.more_vert)],
       backgroundColor: Colors.grey[850],
     );
