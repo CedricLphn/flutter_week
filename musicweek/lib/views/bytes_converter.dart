@@ -1,12 +1,57 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class BytesConvert extends StatefulWidget {
   @override
   _BytesConvertState createState() => _BytesConvertState();
+
+
+  List<DropdownMenuItem<String>> listConverter = <String>[
+    'Octet - O',
+    'Kilooctet - KO',
+    'Mégaoctet - MO',
+    'Gigaoctet - GO',
+    'Téraoctet - TO',
+    'Pétaoctet - PO'
+  ].map<DropdownMenuItem<String>>((String value) {
+    return DropdownMenuItem<String>(
+      value: value,
+      child: Text(value),
+    );
+  }).toList();
+
+
+
+
 }
 
 class _BytesConvertState extends State<BytesConvert> {
-  String dropdownValue = 'Octet - O';
+  String dropdownValue2 = 'Octet - O';
+  String dropdownValue = 'Kilooctet - KO';
+
+  double value1 = 0;
+  double value2 = 0;
+
+  List<String> list = <String>[
+    'Octet - O',
+    'Kilooctet - KO',
+    'Mégaoctet - MO',
+    'Gigaoctet - GO',
+    'Téraoctet - TO',
+    'Pétaoctet - PO'
+  ];
+
+
+  var _controllerValue2FormField = TextEditingController();
+
+  double convert(double number, int fromIndex, int toIndex, bool division) {
+    int numberReference = 1024;
+
+    return number / pow(numberReference, (toIndex +1 - fromIndex +1));
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,25 +82,23 @@ class _BytesConvertState extends State<BytesConvert> {
                               dropdownValue = newValue;
                             });
                           },
-                          items: <String>[
-                            'Octet - O',
-                            'Kilooctet - KO',
-                            'Mégaoctet - MO',
-                            'Gigaoctet - GO',
-                            'Téraoctet - TO',
-                            'Pétaoctet - PO'
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                      ),
+                          items: BytesConvert().listConverter
+                      )),
                       Flexible(
                         child: TextFormField(
+                          onChanged: (event) {
+                            if(event != "") {
+                              setState(() {
+                                value2 = double.parse(event);
+                                _controllerValue2FormField.text = convert(
+                                    double.parse(event),
+                                    list.indexOf(dropdownValue),
+                                    list.indexOf(dropdownValue2),
+                                    false).toString();
+                              });
+                            }
+                          },
                           decoration: const InputDecoration(
-                            icon: Icon(Icons.person),
                             labelText: 'Value 1',
                           ),
                         ),
@@ -73,32 +116,20 @@ class _BytesConvertState extends State<BytesConvert> {
                     children: <Widget>[
                       Flexible(
                         child: DropdownButtonFormField<String>(
-                          value: dropdownValue,
+                          value: dropdownValue2,
                           style: TextStyle(color: Colors.deepPurple),
                           onChanged: (String newValue) {
                             setState(() {
-                              dropdownValue = newValue;
+                              dropdownValue2 = newValue;
                             });
                           },
-                          items: <String>[
-                            'Octet - O',
-                            'Kilooctet - KO',
-                            'Mégaoctet - MO',
-                            'Gigaoctet - GO',
-                            'Téraoctet - TO',
-                            'Pétaoctet - PO'
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                          items: BytesConvert().listConverter,
                         ),
                       ),
                       Flexible(
                         child: TextFormField(
+                          controller: _controllerValue2FormField,
                           decoration: const InputDecoration(
-                            icon: Icon(Icons.person),
                             labelText: 'Value 2',
                           ),
                         ),
