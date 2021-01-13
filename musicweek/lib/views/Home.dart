@@ -59,19 +59,19 @@ const List<Choice> choices = const <Choice>[
   const Choice(
       title: 'Convertir une distance',
       icon: Icons.edit_road,
-      route: '/distance_converter'),
+      route: '/distance'),
   const Choice(
       title: 'Convertir des aires',
       icon: Icons.ac_unit,
-      route: '/area_converter'),
+      route: '/aires'),
   const Choice(
       title: 'Convertir des températures',
       icon: Icons.ac_unit_sharp,
-      route: '/temperature_converter'),
+      route: '/temperature'),
   const Choice(
       title: 'Convertir décimal en chiffre romain',
       icon: Icons.calculate_outlined,
-      route: '/roman_converter'),
+      route: '/romain'),
   const Choice(
       title: 'Playlist de music', icon: Icons.music_note, route: '/music'),
 ];
