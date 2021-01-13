@@ -37,12 +37,15 @@ class _BytesConvertState extends State<BytesConvert> {
     'Pétaoctet - PO'
   ];
 
+  var _controllerValueFormField = TextEditingController();
   var _controllerValue2FormField = TextEditingController();
 
-  double convert(double number, int fromIndex, int toIndex, bool division) {
-    int numberReference = 1024;
+  double convert(double number, int fromIndex, int toIndex) {
+    int numberReference = 1000;
+    print("from $fromIndex");
+    print("to $toIndex");
 
-    return number / pow(numberReference, (toIndex + 1 - fromIndex + 1));
+    return number / pow(numberReference, (toIndex - fromIndex));
   }
 
   @override
@@ -86,14 +89,14 @@ class _BytesConvertState extends State<BytesConvert> {
                               setState(() {
                                 value2 = double.parse(event);
                                 _controllerValue2FormField.text = convert(
-                                        double.parse(event),
-                                        list.indexOf(dropdownValue),
-                                        list.indexOf(dropdownValue2),
-                                        false)
-                                    .toString();
+                                    double.parse(event),
+                                    list.indexOf(dropdownValue),
+                                    list.indexOf(dropdownValue2)
+                                ).toString();
                               });
                             }
                           },
+                          controller: _controllerValueFormField,
                           decoration: const InputDecoration(
                             labelText: 'Value 1',
                           ),
@@ -124,6 +127,16 @@ class _BytesConvertState extends State<BytesConvert> {
                       ),
                       Flexible(
                         child: TextFormField(
+                          onChanged: (event) {
+                            setState(() {
+                              value1 = double.parse(event);
+                              _controllerValueFormField.text = convert(
+                                  double.parse(event),
+                                  list.indexOf(dropdownValue2),
+                                  list.indexOf(dropdownValue)
+                              ).toString();
+                            });
+                          },
                           controller: _controllerValue2FormField,
                           decoration: const InputDecoration(
                             labelText: 'Value 2',
