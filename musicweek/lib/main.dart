@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:musicweek/views/Date.dart';
 import 'package:musicweek/views/age.dart';
 import 'package:musicweek/views/aires.dart';
+import 'package:musicweek/views/bytes_converter.dart';
 import 'package:musicweek/views/distance.dart';
 import 'package:musicweek/views/home.dart';
 import 'package:musicweek/views/music.dart';
@@ -18,6 +19,7 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false, routes: {
       '/': (context) => Home(),
+      '/bytes_converter': (context) => BytesConvert(),
       '/age': (context) => Age(),
       '/date' : (context) => Date(),
       '/promotion' : (context) => Promotion(),
