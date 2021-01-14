@@ -13,10 +13,13 @@ class _RomainState extends State<Romain> {
   var controller_chiffre = TextEditingController();
   var controller_romain = TextEditingController();
 
-  List<String> chiffre_romain = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
-  List<int> valeur_decimal = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+
 
   String convert_decimal_to_romain(int number) {
+
+    List<String> chiffre_romain = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+    List<int> valeur_decimal = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+
     String converted = "";
     print("nombre a convertir: $number");
     int decimal = number;
@@ -29,6 +32,32 @@ class _RomainState extends State<Romain> {
       decimal = decimal -  repeat * valeur_decimal[i];
     }
     return converted;
+  }
+
+  int getValue(String r) {
+    List<String> tableau = ['M','D','C','L','X','V','I'];
+    List<int> valeur = [1000,500,100,50,10,5,1];
+
+    if(tableau.indexOf(r) != -1) {
+      return valeur[tableau.indexOf(r)];
+    }
+
+    return 0;
+  }
+
+  int convert_romain_to_decimal(String romain) {
+
+    int decode = 0;
+
+    if(romain.length == 1) {
+      return getValue(romain);
+    }else if(getValue(romain[0]) < getValue(romain[1])) {
+      decode = convert_romain_to_decimal(romain.substring(1, romain.length)) - getValue(romain[0]);
+    }else {
+      decode = convert_romain_to_decimal(romain.substring(1, romain.length)) + getValue(romain[0]);
+    }
+    return decode;
+
   }
 
   @override
@@ -62,6 +91,11 @@ class _RomainState extends State<Romain> {
                       ),
                       Flexible(child: TextFormField(
                           controller: controller_romain,
+                          onChanged: (event) {
+                            if(event != null) {
+                              controller_chiffre.text = convert_romain_to_decimal(event).toString();
+                            }
+                          },
                           decoration: const InputDecoration(
                               labelText: "Chiffre romain"
                           )
