@@ -51,6 +51,7 @@ class _BytesConvertState extends State<BytesConvert> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[850],
       appBar: AppBar(
         title: Text("Convertisseur informatique"),
         backgroundColor: Colors.brown,
@@ -60,12 +61,13 @@ class _BytesConvertState extends State<BytesConvert> {
           height: 500,
           width: 500,
           child: Card(
+            color: Colors.white54,
+            elevation: 8,
             child: ListView(
               padding: EdgeInsets.all(8),
               children: [
                 Container(
                   height: 50,
-                  color: Colors.white,
                   child: Center(
                       child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -74,7 +76,7 @@ class _BytesConvertState extends State<BytesConvert> {
                       Flexible(
                           child: DropdownButtonFormField<String>(
                               value: dropdownValue,
-                              style: TextStyle(color: Colors.deepPurple),
+                              style: TextStyle(color: Colors.brown),
                               onChanged: (String newValue) {
                                 setState(() {
                                   dropdownValue = newValue;
@@ -106,7 +108,6 @@ class _BytesConvertState extends State<BytesConvert> {
                 ),
                 Container(
                   height: 50,
-                  color: Colors.white,
                   child: Center(
                       child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -115,7 +116,7 @@ class _BytesConvertState extends State<BytesConvert> {
                       Flexible(
                         child: DropdownButtonFormField<String>(
                           value: dropdownValue2,
-                          style: TextStyle(color: Colors.deepPurple),
+                          style: TextStyle(color: Colors.brown),
                           onChanged: (String newValue) {
                             setState(() {
                               dropdownValue2 = newValue;

@@ -29,9 +29,12 @@ class _DateState extends State<Date> {
   DateFormat df = new DateFormat.yMd();
   DateFormat ddf = new DateFormat.yMMMMd('en_US');
 
+  TextStyle _textStyle = TextStyle(color: Colors.white);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[850],
       appBar: AppBar(
         title: Text("Combien de jours depuis la dernière fois"),
       ),
@@ -41,8 +44,8 @@ class _DateState extends State<Date> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text("Aujourd'hui nous sommes le :"),
-            Text(dateDuJour = ddf.format(DateTime.now())),
+            Text("Aujourd'hui nous sommes le :", style: _textStyle),
+            Text(dateDuJour = ddf.format(DateTime.now()), style: _textStyle),
             Text(""),
             // Text(dateSelect),
             // Text(result),
@@ -50,9 +53,9 @@ class _DateState extends State<Date> {
               child: Text("Sélectionner les dates"),
               onPressed: (){f1();},
             ),
-            Text(result),
-            Text(dateUne),
-            Text(dateDeux)
+            Text(result, style: _textStyle),
+            Text(dateUne, style: _textStyle),
+            Text(dateDeux, style: _textStyle)
           ],
         ),
       ),
