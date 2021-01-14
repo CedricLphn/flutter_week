@@ -9,19 +9,19 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         leading: Icon(Icons.home),
         actions: [Icon(Icons.more_vert)],
-        title: Text("Flutter GridView Demo"),
+        title: Text("Menu"),
         backgroundColor: Colors.grey[850],
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/background.jpg"),
+              image: AssetImage("assets/images/ecran2.jpg"),
               fit: BoxFit.cover),
         ),
         child: GridView.count(
             crossAxisCount: 3,
-            crossAxisSpacing: 6.0,
-            mainAxisSpacing: 6.0,
+            crossAxisSpacing: 3.0,
+            mainAxisSpacing: 3.0,
             children: List.generate(choices.length, (index) {
               return Center(
                   child: SelectCard(
@@ -44,6 +44,7 @@ class Choice {
   }
 }
 
+//les differents choix personnalisés pour le menu GridView
 const List<Choice> choices = const <Choice>[
   const Choice(
       title: 'Conversion taille de fichiers informatique',
@@ -85,10 +86,10 @@ class SelectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
     return Card(
-      color: Colors.deepOrange[300],
+      color: Colors.blueAccent.withOpacity(0.7),
       child: InkWell(
         //highlightColor: Colors.red,
-        splashColor: Colors.purpleAccent,
+        splashColor: Colors.deepPurple,
         radius: 100,
         onTap: () => choice.changeScreen(context, route),
 
@@ -100,10 +101,10 @@ class SelectCard extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                     child:
-                        Icon(choice.icon, size: 50.0, color: textStyle.color)),
+                        Icon(choice.icon, size: 50.0, color: Colors.white70)),
                 Text(
                   choice.title,
-                  style: textStyle,
+                  style: TextStyle(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ]),
