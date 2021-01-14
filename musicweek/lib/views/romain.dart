@@ -63,68 +63,74 @@ class _RomainState extends State<Romain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Chiffre romain"),
-      ),
-      body: Center(
-        child: Container(
-          child: Column(
-            children: [
-              SizedBox(
-                width: 400,
-                child: Card(
-                  child: Row(
-                    children: [
-                      Flexible(child:
-                  TextFormField(
-                        controller: controller_chiffre,
-                          onChanged: (chiffre) {
-                            if(int.tryParse(chiffre) != null) {
-                              controller_romain.text = convert_decimal_to_romain(int.parse(chiffre));
-                            }
-
-                          },
-                          decoration: const InputDecoration(
-                              labelText: "Chiffre décimal"
-                          )
-                      )
-                      ),
-                      Flexible(child: TextFormField(
-                          controller: controller_romain,
-                          onChanged: (event) {
-                            if(event != null) {
-                              controller_chiffre.text = convert_romain_to_decimal(event).toString();
-                            }
-                          },
-                          decoration: const InputDecoration(
-                              labelText: "Chiffre romain"
-                          )
-                      )
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 300,
-                child: Card(
-                  child: Column(
-                    children: [
-                      Text("Tableau de correspondance"),
-                      Text("I = 1"),
-                      Text("V = 5"),
-                      Text("X = 10"),
-                      Text("L = 50"),
-                      Text("D = 500"),
-                      Text("C = 1000"),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
+        backgroundColor: Colors.grey[850],
+        appBar: AppBar(
+          title: Text("Chiffre romain"),
         ),
-      )
+        body: Center(
+          child: Container(
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 400,
+                  child: Card(
+                    elevation: 10,
+                    margin: const EdgeInsets.all(10),
+                    color: Colors.white54,
+                    child: Row(
+                      children: [
+                        Flexible(child:
+                        TextFormField(
+                            controller: controller_chiffre,
+                            onChanged: (chiffre) {
+                              if(int.tryParse(chiffre) != null) {
+                                controller_romain.text = convert_decimal_to_romain(int.parse(chiffre));
+                              }
+                            },
+                            decoration: const InputDecoration(
+                                labelText: "Chiffre décimal"
+                            )
+                        )
+                        ),
+                        Flexible(child: TextFormField(
+                            controller: controller_romain,
+                            onChanged: (event) {
+                              if(event != null) {
+                                controller_chiffre.text = convert_romain_to_decimal(event).toString();
+                              }
+                            },
+                            decoration: const InputDecoration(
+                                labelText: "Chiffre romain"
+                            )
+                        )
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 300,
+                  child: Card(
+                    elevation: 10,
+                    color: Colors.white54,
+                    child: Column(
+                      children: [
+                        Text("Tableau de correspondance"),
+                        Text("I = 1"),
+                        Text("V = 5"),
+                        Text("X = 10"),
+                        Text("L = 50"),
+                        Text("C = 100"),
+                        Text("D = 500"),
+                        Text("M = 1000"),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        )
     );
   }
 }
