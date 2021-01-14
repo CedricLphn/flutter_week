@@ -2,21 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-class Promotion extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Promotions',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Calculer une promotion'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class Promotion extends StatefulWidget {
+  //Promotion({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -27,13 +14,13 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  //final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _PromotionState createState() => _PromotionState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _PromotionState extends State<Promotion> {
   String prixOrigine="";
   String promotion="";
   String prixEco ="";
@@ -44,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Calculer promotion"),
       ),
       body: Center(
         child: Column(
