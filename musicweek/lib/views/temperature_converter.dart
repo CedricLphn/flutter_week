@@ -41,7 +41,7 @@ class _TempAppState extends State<TempApp> {
       title: Text("Convertir des temperatures"),
       //   leading: Icon(Icons.home),
       actions: [Icon(Icons.more_vert)],
-      backgroundColor: Colors.grey[850],
+      backgroundColor: Colors.brown,
     );
 
     // Container du mode switch les degree
@@ -49,12 +49,12 @@ class _TempAppState extends State<TempApp> {
       child: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(top: 20.0),
+            margin: const EdgeInsets.all(20),
             child: Text(
-              "Choisi Fahrenheit ou Celsius",
+              "F pour Fahrenheit C pour Celsius: ",
               style: TextStyle(
                   fontSize: 16,
-                  color: Colors.orangeAccent[400],
+                  color: Colors.white54,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -102,12 +102,14 @@ class _TempAppState extends State<TempApp> {
 
     //Calcule de la temperature
     Container calcBtn = Container(
+      margin: const EdgeInsets.all(15),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.all(25.0),
-          primary: Colors.orangeAccent[400], // background
-          onPrimary: Colors.white, // foreground
-        ),
+            padding: EdgeInsets.all(25.0),
+            primary: Colors.brown, // background
+            onPrimary: Colors.white54,
+            textStyle: TextStyle(fontWeight: FontWeight.bold) // foreground
+            ),
         child: Text("Valider"),
         onPressed: () {
           setState(() {
@@ -133,6 +135,7 @@ class _TempAppState extends State<TempApp> {
     );
 
     return Scaffold(
+      backgroundColor: Colors.grey[850],
       appBar: appBar,
       body: Container(
         padding: EdgeInsets.all(10.0),

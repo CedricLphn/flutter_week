@@ -21,15 +21,17 @@ class Promotion extends StatefulWidget {
 }
 
 class _PromotionState extends State<Promotion> {
-  String prixOrigine="";
-  String promotion="";
-  String prixEco ="";
-  String prixFinal ="";
-  double promo; double prix;
+  String prixOrigine = "";
+  String promotion = "";
+  String prixEco = "";
+  String prixFinal = "";
+  double promo;
+  double prix;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[850],
       appBar: AppBar(
         title: Text("Calculer promotion"),
       ),
@@ -39,66 +41,66 @@ class _PromotionState extends State<Promotion> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text("Indiquez le prix d'origine :"),
+            Text(
+              "Indiquez le prix d'origine :",
+              style: TextStyle(color: Colors.white54),
+            ),
             TextField(
               keyboardType: TextInputType.number,
               onChanged: (String monPrixOrigine) {
-                setState(() { //pas de changement sans cette methode, les etats sont au centre de flutter
+                setState(() {
+                  //pas de changement sans cette methode, les etats sont au centre de flutter
                   prixOrigine = monPrixOrigine;
                 });
               },
-              decoration: new InputDecoration(
-                  labelText: "00.00€"
-              ),
-
+              decoration: new InputDecoration(labelText: "00.00€"),
             ),
             Text("€"),
             Text(""),
-            Text("Indiquez la promotion : "),
+            Text(
+              "Indiquez la promotion : ",
+              style: TextStyle(color: Colors.white54),
+            ),
             TextField(
-
               onChanged: (String maPromo) {
-                setState(() { //pas de changement sans cette methode, les etats sont au centre de flutter
+                setState(() {
+                  //pas de changement sans cette methode, les etats sont au centre de flutter
                   promotion = maPromo;
                 });
-
               },
-              decoration: new InputDecoration(
-                  labelText: "0%"
-              ),
+              decoration: new InputDecoration(labelText: "0%"),
             ),
             Text("%"),
-             new Icon(Icons.monetization_on_rounded),
-            FlatButton(onPressed: calculPromo,
-                child: new Text("Valider")
-
+            new Icon(
+              Icons.monetization_on_rounded,
+              color: Colors.brown,
             ),
-
+            TextButton(onPressed: calculPromo, child: new Text("Valider")),
             Text(prixEco),
             Text(prixFinal)
           ],
         ),
       ),
-
     );
-
   }
+
   void calculPromo() {
     setState(() {
       promo = double.parse(promotion);
       prix = double.parse(prixOrigine);
       promo = promo / 100;
-      if(promo > 1) {
+      if (promo > 1) {
         prixEco = "Attention, le taux ne doit pas être supérieur à 100%";
         prixFinal = "";
       } else {
         prixEco = "Vous avez économisé : " + (prix * promo).toString() + " €";
 
-        prixFinal = "Le prix après réduction de " + promotion + "% est de " + (prix - (prix * promo)).toString() + " €";
+        prixFinal = "Le prix après réduction de " +
+            promotion +
+            "% est de " +
+            (prix - (prix * promo)).toString() +
+            " €";
       }
     });
-
   }
-
-
 }
