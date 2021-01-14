@@ -21,13 +21,13 @@ class Main extends StatelessWidget {
       '/': (context) => Home(),
       '/bytes_converter': (context) => BytesConvert(),
       '/age': (context) => Age(),
-      '/date' : (context) => Date(),
-      '/promotion' : (context) => Promotion(),
+      '/date': (context) => Date(),
+      '/promotion': (context) => Promotion(),
       '/distance': (context) => Distance(),
-      '/aires' : (context) => Aires(),
-      '/temperature' : (context) => Temperature(),
-      '/romain' : (context) => Romain(),
-      '/music' : (context) => Music()
+      '/aires': (context) => Aires(),
+      '/temperature': (context) => Temperature(),
+      '/romain': (context) => Romain(),
+      '/music': (context) => Music()
     });
   }
 }
