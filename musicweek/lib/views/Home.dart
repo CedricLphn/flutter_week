@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
+
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -43,7 +44,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
                 decoration: BoxDecoration(
-                    color: Colors.deepOrange[300]
+                    color: Colors.blueAccent.withOpacity(0.7),
                 ),
               ),
               ListTile(
@@ -67,6 +68,7 @@ class _HomeState extends State<Home> {
                   Navigator.pop(context);
                 },
               )
+
             ],
           ),
         ),
@@ -97,7 +99,7 @@ class Choice {
   }
 }
 
-//les differents choix personnalisés pour le menu GridView
+//les differents choix personnalisés pour le menu
 const List<Choice> choices = const <Choice>[
   const Choice(
       title: 'Conversion taille de fichiers informatique',
@@ -129,3 +131,4 @@ const List<Choice> choices = const <Choice>[
   const Choice(
       title: 'Playlist de music', icon: Icons.music_note, route: '/music'),
 ];
+
