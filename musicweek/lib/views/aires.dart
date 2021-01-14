@@ -61,7 +61,7 @@ class _AiresState extends State<Aires> {
       appBar: AppBar(
         title: Text("Converter"),
         actions: [Icon(Icons.more_vert)],
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Colors.brown,
       ),
       body: Center(
         child: SizedBox(
