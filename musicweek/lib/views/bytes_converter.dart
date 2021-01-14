@@ -52,9 +52,8 @@ class _BytesConvertState extends State<BytesConvert> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Converter"),
-        actions: [Icon(Icons.more_vert)],
-        backgroundColor: Colors.grey[850],
+        title: Text("Convertisseur informatique"),
+        backgroundColor: Colors.brown,
       ),
       body: Center(
         child: SizedBox(

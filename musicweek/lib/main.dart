@@ -17,8 +17,11 @@ void main() {
 class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
-        color: Colors.blueGrey,
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+      primarySwatch: Colors.brown,
+    ),
         routes: {
       '/': (context) => Home(),
       '/bytes_converter': (context) => BytesConvert(),

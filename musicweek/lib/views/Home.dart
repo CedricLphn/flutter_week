@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
+
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -43,7 +44,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
                 decoration: BoxDecoration(
-                    color: Colors.deepOrange[300]
+                    color: Colors.brown,
                 ),
               ),
               ListTile(
@@ -67,25 +68,24 @@ class _HomeState extends State<Home> {
                   Navigator.pop(context);
                 },
               )
+
             ],
           ),
         ),
         backgroundColor: Colors.grey[850],
         appBar: AppBar(
-          actions: [Icon(Icons.more_vert)],
           title: Text("Utility app"),
           backgroundColor: Colors.grey[850],
         ),
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/background.jpg"),
+                image: AssetImage("assets/images/ecran2.jpg"),
                 fit: BoxFit.cover),
           ),
           child: mode == "grid" ? StyleGrid() : StyleView()
         )
       );
-
   }
 }
 
@@ -99,6 +99,7 @@ class Choice {
   }
 }
 
+//les differents choix personnalisés pour le menu
 const List<Choice> choices = const <Choice>[
   const Choice(
       title: 'Conversion taille de fichiers informatique',
@@ -130,5 +131,4 @@ const List<Choice> choices = const <Choice>[
   const Choice(
       title: 'Playlist de music', icon: Icons.music_note, route: '/music'),
 ];
-
 
