@@ -27,9 +27,9 @@ class SelectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
     return ListTile(
-      tileColor: Colors.deepOrange[300],
-      leading: Icon(choice.icon),
-      title : Text(choice.title),
+      tileColor: Colors.blueAccent.withOpacity(0.7),
+      leading: Icon(choice.icon, color: Colors.white70),
+      title : Text(choice.title, style: TextStyle(color: Colors.white)),
       onTap: () => choice.changeScreen(context, route),
     );
   }

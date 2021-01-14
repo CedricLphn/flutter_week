@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
                 decoration: BoxDecoration(
-                    color: Colors.blueAccent.withOpacity(0.7),
+                    color: Colors.brown,
                 ),
               ),
               ListTile(
