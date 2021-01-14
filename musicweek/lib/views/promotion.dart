@@ -103,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
       promo = promo / 100;
       if(promo > 1) {
         prixEco = "Attention, le taux ne doit pas être supérieur à 100%";
+        prixFinal = "";
       } else {
         prixEco = "Vous avez économisé : " + (prix * promo).toString() + " €";
 

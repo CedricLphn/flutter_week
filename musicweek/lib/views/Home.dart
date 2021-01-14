@@ -5,7 +5,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[850],
       appBar: AppBar(
         leading: Icon(Icons.home),
         actions: [Icon(Icons.more_vert)],

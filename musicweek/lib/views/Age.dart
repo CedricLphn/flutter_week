@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 
+
 class Age extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Savoir mon âge',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
       ),
       home: MyHomePage(title: 'Connaître mon âge'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -50,41 +53,60 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+       backgroundColor: Colors.grey[850],
+      appBar: new AppBar(
+        title: Text("Trouver mon âge"),
+        actions: [Icon(Icons.more_vert)],
+        backgroundColor: Colors.brown,
       ),
       body: Center(
         child: Column(
+
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text("Aujourd'hui nous sommes le :"),
-            Text(dateDuJour = ddf.format(DateTime.now())),
+            Text(
+              "Aujourd'hui nous sommes le :",
+              style: TextStyle(
+              fontSize: 38.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white54,
+            ),
+            ),
+            Text(dateDuJour = ddf.format(DateTime.now()),
+              style: TextStyle(
+                fontSize: 30.0,
+                color: Colors.brown,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic
+              ),),
             Text(""),
-            Text("Votre date de naissance est : "),
+            Text("Votre date de naissance est : ", style: TextStyle(
+                fontSize: 12.0,
+                color: Colors.white54,
+            ),),
+            Text(""),
             Container(
-              margin: EdgeInsets.all(8),
-              child: Text(dateSelect),
+            //  width: 100,
+             // height: 100,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [Colors.brown, Colors.grey]), borderRadius: new BorderRadius.circular(18.0)),
+              padding: EdgeInsets.all(9),
+              child: Text("${dateSelect}", style: TextStyle(color: Colors.white)),
             ),
-            /* Container(
-              margin: EdgeInsets.all(8),
-              child: Text(timeSelect),
-            ),
-            RaisedButton( //pour selectionner l'heure de naissance
-              child: Text("Sélectionner votre heure de naissance"),
-              onPressed: () {
-                DateTime now = DateTime.now();
-                showTimePicker(context: context, initialTime: TimeOfDay(hour: now.hour, minute: now.minute)
-                ).then((timeSelect){
-                  if(timeSelect != null) {
-                    this.timeSelect = timeSelect.hour.toString() + " h " + timeSelect.minute.toString();
-                  }
-                });
-              },
-            ),*/
+            Text(""),
             RaisedButton(
+              shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(18.0)
+              ),
               child: Text("Sélectionner votre date de naissance"),
+              textColor: Colors.white,
+              color: Colors.brown.withOpacity(0.6),
+
               onPressed: (){
                 showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(1900), lastDate: DateTime.now()
                 ).then((value) => {
@@ -157,10 +179,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
             ),
-
-            Text(result),
-            Text(info),
-            Text(delai)
+            Text(""),
+            Text(result, textAlign: TextAlign.center,style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.white60,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic)
+            ),
+            Text(""),
+            Text(info, textAlign: TextAlign.center, style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.white60,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic)),
+            Text(""),
+            Text(delai,  textAlign: TextAlign.center, style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.white60,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic))
           ],
         ),
       ),
