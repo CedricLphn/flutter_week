@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:musicweek/views/stylegrid.dart';
 import 'package:musicweek/views/stylelist.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,7 +11,20 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  String mode = "grid";
+  String mode;
+
+  SharedPreferences settings;
+
+  @override
+  void initState() {
+    super.initState();
+
+    SharedPreferences.getInstance().then((value) {
+      settings = value;
+      mode = value.getString("mode") ?? "grid";
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +53,7 @@ class _HomeState extends State<Home> {
                   setState(() {
                     mode = "grid";
                   });
+                  settings.setString("mode", "grid");
                   Navigator.pop(context);
                 },
               ),
@@ -47,6 +62,8 @@ class _HomeState extends State<Home> {
                 title: Text("List view"),
                 onTap: () {
                   setState(() => mode = "list");
+                  settings.setString("mode", "list");
+
                   Navigator.pop(context);
                 },
               )
