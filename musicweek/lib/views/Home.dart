@@ -72,7 +72,6 @@ class _HomeState extends State<Home> {
         ),
         backgroundColor: Colors.grey[850],
         appBar: AppBar(
-          actions: [Icon(Icons.more_vert)],
           title: Text("Utility app"),
           backgroundColor: Colors.grey[850],
         ),
