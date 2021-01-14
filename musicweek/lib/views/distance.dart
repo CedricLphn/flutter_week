@@ -70,22 +70,22 @@ class _DistanceState extends State<Distance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[850],
       appBar: AppBar(
-        title: Text("Converter"),
-        actions: [Icon(Icons.more_vert)],
-        backgroundColor: Colors.grey[850],
+        title: Text("Distance")
       ),
       body: Center(
         child: SizedBox(
-          height: 500,
+          height: 300,
           width: 500,
           child: Card(
+            color: Colors.white54,
+            elevation: 10,
             child: ListView(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(10),
               children: [
                 Container(
                   height: 50,
-                  color: Colors.white,
                   child: Center(
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -94,7 +94,7 @@ class _DistanceState extends State<Distance> {
                           Flexible(
                               child: DropdownButtonFormField<String>(
                                   value: dropdownValue,
-                                  style: TextStyle(color: Colors.deepPurple),
+                                  style: TextStyle(color: Colors.brown),
                                   onChanged: (String newValue) {
                                     setState(() {
                                       dropdownValue = newValue;
@@ -135,7 +135,7 @@ class _DistanceState extends State<Distance> {
                           Flexible(
                             child: DropdownButtonFormField<String>(
                               value: dropdownValue2,
-                              style: TextStyle(color: Colors.deepPurple),
+                              style: TextStyle(color: Colors.brown),
                               onChanged: (String newValue) {
                                 setState(() {
                                   dropdownValue2 = newValue;
