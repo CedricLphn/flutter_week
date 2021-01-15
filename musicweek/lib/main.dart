@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:musicweek/views/Date.dart';
-import 'package:musicweek/views/age.dart';
-import 'package:musicweek/views/aires.dart';
-import 'package:musicweek/views/binaire.dart';
-import 'package:musicweek/views/bytes_converter.dart';
-import 'package:musicweek/views/distance.dart';
-import 'package:musicweek/views/home.dart';
-import 'package:musicweek/views/music.dart';
-import 'package:musicweek/views/promotion.dart';
-import 'package:musicweek/views/romain.dart';
-import 'package:musicweek/views/temperature_converter.dart';
+import 'package:musicweek/Date.dart';
+import 'package:musicweek/Age.dart';
+import 'package:musicweek/aires.dart';
+import 'package:musicweek/binaire.dart';
+import 'package:musicweek/bytes_converter.dart';
+import 'package:musicweek/distance.dart';
+import 'package:musicweek/Home.dart';
+import 'package:musicweek/music.dart';
+import 'package:musicweek/promotion.dart';
+import 'package:musicweek/romain.dart';
+import 'package:musicweek/temperature_converter.dart';
 
 void main() {
   runApp(Main());

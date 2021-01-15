@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:musicweek/views/stylegrid.dart';
-import 'package:musicweek/views/stylecard.dart';
-import 'package:musicweek/views/stylelist.dart';
+import 'package:musicweek/stylegrid.dart';
+import 'package:musicweek/stylecard.dart';
+import 'package:musicweek/stylelist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
