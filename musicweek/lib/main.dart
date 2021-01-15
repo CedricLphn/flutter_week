@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:musicweek/views/Date.dart';
 import 'package:musicweek/views/age.dart';
 import 'package:musicweek/views/aires.dart';
+import 'package:musicweek/views/binaire.dart';
 import 'package:musicweek/views/bytes_converter.dart';
 import 'package:musicweek/views/distance.dart';
 import 'package:musicweek/views/home.dart';
@@ -26,6 +27,7 @@ class Main extends StatelessWidget {
       '/': (context) => Home(),
       '/bytes_converter': (context) => BytesConvert(),
       '/age': (context) => Age(),
+      '/binaire': (context) => Binaire(),
       '/temperature': (context) => TempApp(),
       '/date' : (context) => Date(),
       '/promotion' : (context) => Promotion(),
