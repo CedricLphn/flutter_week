@@ -2,23 +2,12 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-
-class Music extends StatelessWidget {
+class Music extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MusicApp(),
-    );
-  }
+  _MusicState createState() => _MusicState();
 }
 
-class MusicApp extends StatefulWidget {
-  @override
-  _MusicAppState createState() => _MusicAppState();
-}
-
-class _MusicAppState extends State<MusicApp> {
+class _MusicState extends State<Music> {
   bool playing = false; // variable qui va permettre de dire à la musique d'etre sur pause ou de s'arreter
   IconData playBtn = Icons.play_arrow; // bouton play
 
@@ -31,13 +20,16 @@ class _MusicAppState extends State<MusicApp> {
 
   //design
   Widget slider() {
+    if(position.inSeconds == 0) {
+      return Text("");
+    }
     return Container(
       width: 300.0,
       child: Slider.adaptive(
           activeColor: Colors.deepPurple,
           inactiveColor: Colors.grey[350],
-          value: position.inSeconds.toDouble(),
-          max: musicLength.inSeconds.toDouble(),
+          value: position.inSeconds != 0 ? position.inSeconds.toDouble() : 0.01,
+          max: musicLength.inSeconds != 0 ? musicLength.inSeconds.toDouble() : 0.01,
           onChanged: (value) {
             seekToSec(value.toInt());
           }),
@@ -57,7 +49,6 @@ class _MusicAppState extends State<MusicApp> {
     _player = AudioPlayer();
     cache = AudioCache(fixedPlayer: _player);
 
-
     //permet de modifier la durée de la musique
     _player.durationHandler = (d) {
       setState(() {
@@ -76,8 +67,11 @@ class _MusicAppState extends State<MusicApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+      title: Text("Lecteur"),
+        backgroundColor: Colors.black87,
+      ),
       body: Container(
-        width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
