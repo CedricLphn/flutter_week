@@ -29,6 +29,7 @@ class _AgeState extends State<Age> {
   String dateSelect = "Aucune date sélectionnée";
   //String timeSelect = "Aucune heure sélectionnée";
   int age, mois, annee, jour, heure, jourD, moisD, heureD, moisD1, jourD1;
+  double moisD2;
   DateFormat df = new DateFormat.yMd();
   DateFormat dd = new DateFormat.d();
   DateFormat ddf = new DateFormat.yMMMMd('en_US');
@@ -91,7 +92,7 @@ class _AgeState extends State<Age> {
               color: Colors.brown.withOpacity(0.6),
 
               onPressed: (){
-                showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(1900), lastDate: DateTime.now()
+                showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(1900), lastDate: DateTime.now(), helpText: "Date d'anniversiare"
                 ).then((value) => {
                   setState((){
                     this.dateSelect = df.format(value);
@@ -100,6 +101,7 @@ class _AgeState extends State<Age> {
                     heure = DateTime.now().difference(value).inHours;
                     moisD = value.month - DateTime.now().month;
                     mois = 12 * annee;
+                    moisD2 = jour * 0.03285; // un jour est egal à 0.03285
                     if(DateTime.now().day <= value.day) {
                       jourD = value.day - DateTime.now().day;
                     } else {
@@ -157,7 +159,7 @@ class _AgeState extends State<Age> {
 
                       }
                     }
-                    info = "Vous avez vécu jusqu'à maintenant " + annee.toString() + " ans  " + mois.toString() + " mois " + jour.toString() + " jours soit " + heure.toString() +" heures !";
+                    info = "Vous avez vécu jusqu'à maintenant " + annee.toString() + " ans soit " + moisD2.toStringAsFixed(2) + " mois ou bien " + jour.toString() + " jours soit " + heure.toString() +" heures !";
                   })
                 });
               },

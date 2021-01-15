@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:musicweek/views/stylegrid.dart';
+import 'package:musicweek/views/stylecard.dart';
 import 'package:musicweek/views/stylelist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,7 +13,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   String mode;
-
   SharedPreferences settings;
 
   @override
@@ -23,6 +23,16 @@ class _HomeState extends State<Home> {
       settings = value;
       mode = value.getString("mode") ?? "grid";
     });
+  }
+
+  switchMode() {
+    if(mode == "grid") {
+      return StyleGrid();
+    }else if(mode == "list") {
+      return StyleView();
+    }else {
+      return StyleCard();
+    }
   }
 
 
@@ -67,6 +77,16 @@ class _HomeState extends State<Home> {
 
                   Navigator.pop(context);
                 },
+              ),
+              ListTile(
+                leading: Icon(Icons.article_outlined),
+                title: Text("Card view"),
+                onTap: () {
+                  setState(() => mode = "card");
+                  settings.setString("mode", "card");
+
+                  Navigator.pop(context);
+                },
               )
 
             ],
@@ -83,7 +103,7 @@ class _HomeState extends State<Home> {
                 image: AssetImage("assets/images/ecran2.jpg"),
                 fit: BoxFit.cover),
           ),
-          child: mode == "grid" ? StyleGrid() : StyleView()
+          child: switchMode()
         )
       );
   }
@@ -120,6 +140,10 @@ const List<Choice> choices = const <Choice>[
       title: 'Convertir des aires',
       icon: Icons.ac_unit,
       route: '/aires'),
+  const Choice(
+      title: 'Convertir des binaires',
+      icon: Icons.all_inclusive,
+      route: '/binaire'),
   const Choice(
       title: 'Convertir des températures',
       icon: Icons.ac_unit_sharp,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'Home.dart';
 
-class StyleGrid extends StatelessWidget {
+class StyleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +28,15 @@ class SelectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridTile(
+    final TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
+    return Card(
+      color: Colors.blueAccent.withOpacity(0.7),
       child: InkWell(
         //highlightColor: Colors.red,
         splashColor: Colors.deepPurple,
         radius: 100,
         onTap: () => choice.changeScreen(context, route),
+
         child: Container(
           padding: EdgeInsets.all(15),
           height: 200,
